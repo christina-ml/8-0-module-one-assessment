@@ -285,43 +285,54 @@ function getBiggestBoxOfficeMovie(movies) {
     return null; // return null if no movies
   }
 
+  // helper function - remove `notNum` characters
+  function priceWithoutDollarSign(priceStr) {
+    let price = "";
+    for (let notNum of priceStr) {
+      if (!isNaN (Number(notNum))) {
+        price += notNum;
+      }
+    }
+    return Number(price);
+  }
+
+  let highestBoxOfficeMovie = movies[0];
+  for (let i = 0; i < movies.length; i++) {
+    // use helper function to compare movies index to find highest
+    if (priceWithoutDollarSign(movies[i].boxOffice) > priceWithoutDollarSign(highestBoxOfficeMovie.boxOffice)) {
+      highestBoxOfficeMovie = movies[i];
+    }
+  }
+  return highestBoxOfficeMovie.title; // outside for loop
+
+
   // TODO: Access the price only for `boxOffice`, as a number (not string) without the "$" symbol or commas.
-  let highestBoxOfficeMovie = ""; // string
-
-  // empty array to store `boxOffice` prices as (number)
-  let pricesArr = [];
-  let pricesArrObj = {};
-  let priceWithoutDollarSign = "";
-
+  
   // remove dollar sign from string using split
   // priceWithoutDollarSign = movies[0].boxOffice.split();
   // priceWithoutDollarSign.shift();
   // console.log(priceWithoutDollarSign); // splits each character
 
-  // remove dollar sign from string using slice
-  priceWithoutDollarSign = movies[0].boxOffice.slice(1);
-  // use parseFloat to remove commas from string
-  priceWithoutDollarSign = parseFloat(priceWithoutDollarSign.replace(/,/g, ''));
-  // change string without dollar sign or commas to number ?
-  priceWithoutDollarSign = Number(priceWithoutDollarSign);
-  // console.log(priceWithoutDollarSign);
+  // // remove dollar sign from string using slice
+  // priceWithoutDollarSign = movies[0].boxOffice.slice(1);
+  // // use parseFloat to remove commas from string
+  // priceWithoutDollarSign = parseFloat(priceWithoutDollarSign.replace(/,/g, ''));
+  // // change string without dollar sign or commas to number ?
+  // priceWithoutDollarSign = Number(priceWithoutDollarSign);
+  // // console.log(priceWithoutDollarSign);
 
-  // // push numbers to array
-  // pricesArr.push(priceWithoutDollarSign);
-
-    for (let i = 0; i < movies.length; i++) {
-      if (priceWithoutDollarSign > highestBoxOfficeMovie) {
-        highestBoxOfficeMovie = movies[i].title;
-        return highestBoxOfficeMovie = movies[i].title;
-      }
+    // for (let i = 0; i < movies.length; i++) {
+    //   if (priceWithoutDollarSign > highestBoxOfficeMovie) {
+    //     highestBoxOfficeMovie = movies[i].title;
+    //     return highestBoxOfficeMovie = movies[i].title;
+    //   }
 
       // if (priceWithoutDollarSign > movies[i].boxOffice) {
       //   priceWithoutDollarSign = movies[i].title;
       // }
   }
-  return highestBoxOfficeMovie;
+
   // TODO: This function is not looping, it's only getting the first index of the array of objects and returning the first one `Toy Story 4`.
-}
 console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to test
 // where in array of objects:
 // boxOffice: "$434,038,008",
