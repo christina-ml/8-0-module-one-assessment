@@ -28,7 +28,19 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  let allMovieTitles = []; // array
+
+  for (let i = 0; i < movies.length; i++) {
+    allMovieTitles.push(movies[i].title);
+  }
+  return allMovieTitles; // outside for loop
+}
+// console.log(getAllMovieTitles(exampleMovies)) // print to console to test
+
+// where in array of objects:
+// "Toy Story 4",
+//  title: "Toy Story 4",
 
 /**
  * getHighestMetascore()
@@ -41,7 +53,8 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {}
+
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +67,12 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+
+}
+
+// where in array of objects:
+// imdbRating: "7.7",
 
 /**
  * countByRating()
@@ -67,7 +85,7 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {}
 
 /**
  * findById()
@@ -83,7 +101,7 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {}
 
 /**
  * filterByGenre()
@@ -105,7 +123,7 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -129,7 +147,7 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -142,7 +160,7 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {}
 
 // Do not change anything below this line.
 module.exports = {
