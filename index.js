@@ -88,7 +88,7 @@ function getAverageIMDBRating(movies) {
   let totalRatings = averageIMDBRating/ movies.length;
   return totalRatings.toFixed(2);
 }
-console.log(getAverageIMDBRating(exampleMovies)); // print to console to test
+// console.log(getAverageIMDBRating(exampleMovies)); // print to console to test
 
 // where in array of objects:
 // imdbRating: "7.7",
@@ -104,7 +104,22 @@ console.log(getAverageIMDBRating(exampleMovies)); // print to console to test
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating(movies) {}
+function countByRating(movies) {
+  let ratingCount = {};
+
+  for (let i = 0; i < movies.length; i++) {
+    if (ratingCount[movies[i].rated]) {
+      ratingCount[movies[i].rated]++;
+    } else {
+      ratingCount[movies[i].rated] = 1;
+    }
+  }
+  return ratingCount;
+}
+console.log(countByRating(exampleMovies));
+
+// where in array of objects:
+// rated: "G",
 
 /**
  * 5. findById()
