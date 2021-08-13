@@ -147,7 +147,6 @@ function findById(movies, id) {
 
   for (let i = 0; i < movies.length; i++) {
     if (movies[i].imdbID === id) {
-      console.log(movies[i].title);
       return movieById = movies[i];
     }
   }
@@ -255,21 +254,32 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  */
 function getBiggestBoxOfficeMovie(movies) {
   if (movies.length === 0) {
-    return null; // null if no movies
+    return null; // return null if no movies
   }
 
-  // TODO: Access the price only for `boxOffice`, as a number (not string) without the "$" symbol
-
+  // TODO: Access the price only for `boxOffice`, as a number (not string) without the "$" symbol or commas.
 
   let highestBoxOfficeMovie = ""; // string
 
+  // empty array to store `boxOffice` prices as (number)
+  let pricesArr = [];
+
   for (let i = 0; i < movies.length; i++){
-    // remove dollar sign
+    // remove dollar sign from string using slice
     let priceWithoutDollarSign = movies[i].boxOffice.slice(1);
-    // console.log(priceWithoutDollarSign);
-    if (priceWithoutDollarSign > highestBoxOfficeMovie) {
-      highestBoxOfficeMovie = movies[i].title;
-      return movies[i].title;
+    // use parseFloat to remove commas from string
+    priceWithoutDollarSign = parseFloat(priceWithoutDollarSign.replace(/,/g, ''));
+
+    // push numbers to array
+    pricesArr.push(priceWithoutDollarSign);
+    console.log(pricesArr);
+
+    for (let i = 0; i < movies.length; i++) {
+      // nested `if` statement to loop over prices
+      if (priceWithoutDollarSign > highestBoxOfficeMovie) {
+        highestBoxOfficeMovie = movies[i].title;
+        return highestBoxOfficeMovie = movies[i].title;
+      }
     }
   }
   return highestBoxOfficeMovie;
@@ -278,6 +288,14 @@ console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to tes
 // where in array of objects:
 // boxOffice: "$434,038,008",
 // title: "Toy Story 4",
+
+
+
+/**
+ * @christina - Resources used to help with last 2 problems:
+ * @string - https://stackoverflow.com/questions/5788741/remove-commas-from-the-string-using-javascript
+ * @array - https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly
+ */
 
 // Do not change anything below this line.
 module.exports = {
