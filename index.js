@@ -227,17 +227,33 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
     return []; // empty array if no movies
   }
 
-  // TODO: Access the year only for `released`, as a number (not string)
+  let moviesReleasedDate = [];
 
-// let year = 0;
 
-// for (let i = 0; i < movies.length; i++) {
+  // Accumulator #1
+  // access year only for `released` as a number (not string)
+  for (let i = 0; i < movies.length; i++) {
+    let theYear = movies[i].released;
+    console.log(theYear);
+  }
 
-// }
 
+  // Accumulator #2
+  for (let i = 0; i < movies.length; i++) {
+
+    // console.log(movies[i].released.includes(year));
+    // if year is equal to
+    // if (movies[i].released.includes(year)) {
+    //   moviesReleasedDate.push(movies[i]);
+    //   // if year is less than
+    // } else if (year < movies[i].released.includes(year)) {
+    //   moviesReleasedDate.push(movies[i]);
+    // }
+
+  }
 
 }
-// console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
+console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
 // where in array of objects:
 // released: "21 Jun 2019",
 
@@ -263,16 +279,29 @@ function getBiggestBoxOfficeMovie(movies) {
 
   // empty array to store `boxOffice` prices as (number)
   let pricesArr = [];
+  let pricesArrObj = {};
 
-  for (let i = 0; i < movies.length; i++){
+  // remove dollar sign from string using split
+  // priceWithoutDollarSign = movies[0].boxOffice.split();
+  // priceWithoutDollarSign.shift();
+  // console.log(priceWithoutDollarSign); // splits each character
+
+  // pricesArr.push(pricesArrObj[priceWithoutDollarSign]++);
+  // console.log(priceWithoutDollarSign);
+  // console.log(pricesArr);
+  // pricesArrObj[priceWithoutDollarSign]++;
+  // console.log(pricesArrObj);
+
     // remove dollar sign from string using slice
-    let priceWithoutDollarSign = movies[i].boxOffice.slice(1);
+    let priceWithoutDollarSign = movies[0].boxOffice.slice(1);
     // use parseFloat to remove commas from string
     priceWithoutDollarSign = parseFloat(priceWithoutDollarSign.replace(/,/g, ''));
 
     // push numbers to array
     pricesArr.push(priceWithoutDollarSign);
     console.log(pricesArr); // test what gets pushed to empty array
+
+  for (let i = 0; i < movies.length; i++){
 
     for (let i = 0; i < movies.length; i++) {
       // nested `if` statement to loop over prices
@@ -284,16 +313,12 @@ function getBiggestBoxOfficeMovie(movies) {
   }
   return highestBoxOfficeMovie;
 
-
   // TODO: This function is not looping, it's only getting the first index of the array of objects and returning the first one `Toy Story 4`.
-
 }
-console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to test
+// console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to test
 // where in array of objects:
 // boxOffice: "$434,038,008",
 // title: "Toy Story 4",
-
-
 
 /**
  * @christina - Resources used to help with last 2 problems:
