@@ -229,7 +229,6 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
 
   let moviesReleasedDate = [];
 
-
   // Accumulator #1
   // access year only for `released` as a number (not string)
   for (let i = 0; i < movies.length; i++) {
@@ -239,11 +238,15 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
     theYear = theYear.substr(7, theYear.length -1);
     theYear = Number(theYear);
     console.log(theYear); // check in console
-  }
 
-  // check colors of output in console
-  // console.log("string");
-  // console.log(85);
+    // Returns all movie objects with a `released` year equal to or less than the given year.
+    if (movies[i].released <= year) {
+      moviesReleasedDate.push(movies[i]);
+    }
+  }
+  return moviesReleasedDate; // outside for loop
+  
+  // TODO: replace value for `released` in each object of movies array with `theYear` (number) instead of `21 June 2019` (string)
 
   // Accumulator #2
   // for (let i = 0; i < movies.length; i++) {
@@ -257,9 +260,15 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
   //   }
   // }
 }
-console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
+// console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
 // where in array of objects:
 // released: "21 Jun 2019",
+// title: "Toy Story 4",
+
+/**
+ * @christina - Resources used to help with problem #7:
+ * @string - https://www.tracedynamics.com/javascript-remove-character-from-string/
+ */
 
 /**
  * 8. getBiggestBoxOfficeMovie()
@@ -278,58 +287,49 @@ function getBiggestBoxOfficeMovie(movies) {
   }
 
   // TODO: Access the price only for `boxOffice`, as a number (not string) without the "$" symbol or commas.
-
   let highestBoxOfficeMovie = ""; // string
 
   // empty array to store `boxOffice` prices as (number)
   let pricesArr = [];
   let pricesArrObj = {};
+  let priceWithoutDollarSign = "";
 
   // remove dollar sign from string using split
   // priceWithoutDollarSign = movies[0].boxOffice.split();
   // priceWithoutDollarSign.shift();
   // console.log(priceWithoutDollarSign); // splits each character
 
-  // pricesArr.push(pricesArrObj[priceWithoutDollarSign]++);
+  // remove dollar sign from string using slice
+  priceWithoutDollarSign = movies[0].boxOffice.slice(1);
+  // use parseFloat to remove commas from string
+  priceWithoutDollarSign = parseFloat(priceWithoutDollarSign.replace(/,/g, ''));
+  // change string without dollar sign or commas to number ?
+  priceWithoutDollarSign = Number(priceWithoutDollarSign);
   // console.log(priceWithoutDollarSign);
-  // console.log(pricesArr);
-  // pricesArrObj[priceWithoutDollarSign]++;
-  // console.log(pricesArrObj);
 
-    // remove dollar sign from string using slice
-    let priceWithoutDollarSign = movies[0].boxOffice.slice(1);
-    // use parseFloat to remove commas from string
-    priceWithoutDollarSign = parseFloat(priceWithoutDollarSign.replace(/,/g, ''));
-    // change string without dollar sign or commas to number ?
-    priceWithoutDollarSign = Number(priceWithoutDollarSign);
-    console.log(priceWithoutDollarSign);
-
-
-    // push numbers to array
-    pricesArr.push(priceWithoutDollarSign);
-    console.log(pricesArr); // test what gets pushed to empty array
-
-  for (let i = 0; i < movies.length; i++){
+  // // push numbers to array
+  // pricesArr.push(priceWithoutDollarSign);
 
     for (let i = 0; i < movies.length; i++) {
-      // nested `if` statement to loop over prices
-      if (priceWithoutDollarSign > highestBoxOfficeMovie) {
-        highestBoxOfficeMovie = movies[i].title;
-        return highestBoxOfficeMovie = movies[i].title;
+      // if (priceWithoutDollarSign > highestBoxOfficeMovie) {
+      //   highestBoxOfficeMovie = movies[i].title;
+      //   return highestBoxOfficeMovie = movies[i].title;
+      // }
+
+      if (priceWithoutDollarSign > movies[i].boxOffice) {
+        priceWithoutDollarSign = movies[i].title;
       }
-    }
   }
   return highestBoxOfficeMovie;
-
   // TODO: This function is not looping, it's only getting the first index of the array of objects and returning the first one `Toy Story 4`.
 }
-// console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to test
+console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to test
 // where in array of objects:
 // boxOffice: "$434,038,008",
 // title: "Toy Story 4",
 
 /**
- * @christina - Resources used to help with last 2 problems:
+ * @christina - Resources used to help with problems #7, #8:
  * @string - https://stackoverflow.com/questions/5788741/remove-commas-from-the-string-using-javascript
  * @array - https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly
  */
