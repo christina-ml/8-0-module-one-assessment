@@ -310,14 +310,14 @@ function getBiggestBoxOfficeMovie(movies) {
   // pricesArr.push(priceWithoutDollarSign);
 
     for (let i = 0; i < movies.length; i++) {
-      // if (priceWithoutDollarSign > highestBoxOfficeMovie) {
-      //   highestBoxOfficeMovie = movies[i].title;
-      //   return highestBoxOfficeMovie = movies[i].title;
-      // }
-
-      if (priceWithoutDollarSign > movies[i].boxOffice) {
-        priceWithoutDollarSign = movies[i].title;
+      if (priceWithoutDollarSign > highestBoxOfficeMovie) {
+        highestBoxOfficeMovie = movies[i].title;
+        return highestBoxOfficeMovie = movies[i].title;
       }
+
+      // if (priceWithoutDollarSign > movies[i].boxOffice) {
+      //   priceWithoutDollarSign = movies[i].title;
+      // }
   }
   return highestBoxOfficeMovie;
   // TODO: This function is not looping, it's only getting the first index of the array of objects and returning the first one `Toy Story 4`.
