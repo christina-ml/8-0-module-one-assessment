@@ -224,6 +224,12 @@ function filterByGenre(movies, genre) {
  */
 
 function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  if (movies.length === 0) {
+    return []; // empty array if no movies
+  }
+
+  // TODO: Access the year only for `released`, as a number (not string)
+
 // let year = 0;
 
 // for (let i = 0; i < movies.length; i++) {
@@ -248,6 +254,13 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  //> "Incredibles 2"
  */
 function getBiggestBoxOfficeMovie(movies) {
+  if (movies.length === 0) {
+    return null; // null if no movies
+  }
+
+  // TODO: Access the price only for `boxOffice`, as a number (not string) without the "$" symbol
+
+
   let highestBoxOfficeMovie = ""; // string
 
   for (let i = 0; i < movies.length; i++){
