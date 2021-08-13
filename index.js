@@ -234,24 +234,28 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
   // access year only for `released` as a number (not string)
   for (let i = 0; i < movies.length; i++) {
     let theYear = movies[i].released;
-    console.log(theYear);
+    // Remove characters before the year.
+    // These are all the years as numbers.
+    theYear = theYear.substr(7, theYear.length -1);
+    theYear = Number(theYear);
+    console.log(theYear); // check in console
   }
 
+  // check colors of output in console
+  // console.log("string");
+  // console.log(85);
 
   // Accumulator #2
-  for (let i = 0; i < movies.length; i++) {
-
-    // console.log(movies[i].released.includes(year));
-    // if year is equal to
-    // if (movies[i].released.includes(year)) {
-    //   moviesReleasedDate.push(movies[i]);
-    //   // if year is less than
-    // } else if (year < movies[i].released.includes(year)) {
-    //   moviesReleasedDate.push(movies[i]);
-    // }
-
-  }
-
+  // for (let i = 0; i < movies.length; i++) {
+  //   console.log(movies[i].released.includes(year));
+  //   // if year is equal to
+  //   if (movies[i].released.includes(year)) {
+  //     moviesReleasedDate.push(movies[i]);
+  //     // if year is less than
+  //   } else if (year < movies[i].released.includes(year)) {
+  //     moviesReleasedDate.push(movies[i]);
+  //   }
+  // }
 }
 console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
 // where in array of objects:
@@ -296,6 +300,10 @@ function getBiggestBoxOfficeMovie(movies) {
     let priceWithoutDollarSign = movies[0].boxOffice.slice(1);
     // use parseFloat to remove commas from string
     priceWithoutDollarSign = parseFloat(priceWithoutDollarSign.replace(/,/g, ''));
+    // change string without dollar sign or commas to number ?
+    priceWithoutDollarSign = Number(priceWithoutDollarSign);
+    console.log(priceWithoutDollarSign);
+
 
     // push numbers to array
     pricesArr.push(priceWithoutDollarSign);
