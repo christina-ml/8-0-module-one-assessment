@@ -227,24 +227,23 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
     return []; // empty array if no movies
   }
 
-  let moviesReleasedDate = [];
+  let moviesReleasedDateArr = [];
 
   // Accumulator #1
   // access year only for `released` as a number (not string)
   for (let i = 0; i < movies.length; i++) {
-    let theYear = movies[i].released;
-    // Remove characters before the year.
-    // These are all the years as numbers.
-    theYear = theYear.substr(7, theYear.length -1);
-    theYear = Number(theYear);
-    console.log(theYear); // check in console
-
+    let theYear = Number(movies[i].released.substr(7, movies[i].released.length -1));
+    // re-factor extra lines of code into 1 variable `theYear` ^^:
+    // Remove characters before the year. // These are all the years as numbers.
+    // theYear = theYear.substr(7, theYear.length -1);
+    // theYear = Number(theYear);
+   
     // Returns all movie objects with a `released` year equal to or less than the given year.
-    if (movies[i].released <= year) {
-      moviesReleasedDate.push(movies[i]);
+    if (theYear <= year) {
+      moviesReleasedDateArr.push(movies[i]);
     }
   }
-  return moviesReleasedDate; // outside for loop
+  return moviesReleasedDateArr; // outside for loop
   
   // TODO: replace value for `released` in each object of movies array with `theYear` (number) instead of `21 June 2019` (string)
 
@@ -260,14 +259,14 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
   //   }
   // }
 }
-// console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
+console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
 // where in array of objects:
 // released: "21 Jun 2019",
 // title: "Toy Story 4",
 
 /**
  * @christina - Resources used to help with problem #7:
- * @string - https://www.tracedynamics.com/javascript-remove-character-from-string/
+ * @string - to substr - https://www.tracedynamics.com/javascript-remove-character-from-string/
  */
 
 /**
