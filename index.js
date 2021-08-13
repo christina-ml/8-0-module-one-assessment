@@ -185,14 +185,14 @@ function filterByGenre(movies, genre) {
   let filteredGenre = []; // array
 
   for (let i = 0; i < movies.length; i++) {
-    // if movie includes genre
-    if (movies[i].genre.includes(genre)) {
+    // if movie includes genre, case-insensitive
+    if (movies[i].genre.toUpperCase().includes(genre.toUpperCase())) {
       filteredGenre.push(movies[i]);
     }
   }
   return filteredGenre; // outside for loop
 }
-console.log(filterByGenre(exampleMovies, "Mystery")); // print to console to test
+// console.log(filterByGenre(exampleMovies, "Mystery")); // print to console to test
 // where in array of objects:
 // genre: "Animation, Adventure, Comedy, Drama, Family, Fantasy",
 
@@ -219,7 +219,19 @@ console.log(filterByGenre(exampleMovies, "Mystery")); // print to console to tes
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
+
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+// let year = 0;
+
+// for (let i = 0; i < movies.length; i++) {
+
+// }
+
+
+}
+// console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000)); // print to console to test
+// where in array of objects:
+// released: "21 Jun 2019",
 
 /**
  * 8. getBiggestBoxOfficeMovie()
@@ -232,7 +244,24 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie(movies) {}
+function getBiggestBoxOfficeMovie(movies) {
+  let highestBoxOfficeMovie = ""; // string
+
+  for (let i = 0; i < movies.length; i++){
+    // remove dollar sign
+    let priceWithoutDollarSign = movies[i].boxOffice.slice(1);
+    // console.log(priceWithoutDollarSign);
+    if (priceWithoutDollarSign > highestBoxOfficeMovie) {
+      highestBoxOfficeMovie = movies[i].title;
+      return movies[i].title;
+    }
+  }
+  return highestBoxOfficeMovie;
+}
+console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to test
+// where in array of objects:
+// boxOffice: "$434,038,008",
+// title: "Toy Story 4",
 
 // Do not change anything below this line.
 module.exports = {
