@@ -7,7 +7,7 @@ const exampleMovies = require("./movies");
 // Do not change the line above.
 
 /**
- * getAllMovieTitles()
+ * 1. getAllMovieTitles()
  * -----------------------------
  * Returns all of titles from an array of movies. If the inputted `movies` array is empty, return `[]`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
@@ -43,7 +43,7 @@ function getAllMovieTitles(movies) {
 //  title: "Toy Story 4",
 
 /**
- * getHighestMetascore()
+ * 2. getHighestMetascore()
  * -----------------------------
  * Returns the highest `metascore` among all movies. If the inputted `movies` array is empty, return `0`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
@@ -54,7 +54,7 @@ function getAllMovieTitles(movies) {
  *  //> 96
  */
 function getHighestMetascore(movies) {
-  let highestMetascore = 0;
+  let highestMetascore = 0; // number
 
   for (let i = 0; i < movies.length; i++) {
     if (Number(movies[i].metascore) > highestMetascore) {
@@ -63,13 +63,13 @@ function getHighestMetascore(movies) {
   }
   return highestMetascore; // outside for loop
 }
-console.log(getHighestMetascore(exampleMovies));
+// console.log(getHighestMetascore(exampleMovies)); // print to console to test
 
 // where in array of objects:
 // metascore: "84",
 
 /**
- * getAverageIMDBRating()
+ * 3. getAverageIMDBRating()
  * -----------------------------
  * Averages all of the IMDB ratings from all movies and returns it, as a number. If the inputted `movies` array is empty, return `0`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
@@ -80,14 +80,21 @@ console.log(getHighestMetascore(exampleMovies));
  *  //> 7.76
  */
 function getAverageIMDBRating(movies) {
+  let averageIMDBRating = 0; // number
 
+  for (let i = 0; i < movies.length; i++) {
+    averageIMDBRating += Number(movies[i].imdbRating);
+  }
+  let totalRatings = averageIMDBRating/ movies.length;
+  return totalRatings.toFixed(2);
 }
+console.log(getAverageIMDBRating(exampleMovies)); // print to console to test
 
 // where in array of objects:
 // imdbRating: "7.7",
 
 /**
- * countByRating()
+ * 4. countByRating()
  * -----------------------------
  * Returns an object where the keys are movie ratings and the values are the number of movies in the array with that rating. If the inputted `movies` array is empty, return `{}`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
@@ -100,7 +107,7 @@ function getAverageIMDBRating(movies) {
 function countByRating(movies) {}
 
 /**
- * findById()
+ * 5. findById()
  * -----------------------------
  * Returns a movie object from an array of objects based on the ID. If the inputted `movies` array is empty or the ID does not match any movie, return `null`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
@@ -116,7 +123,7 @@ function countByRating(movies) {}
 function findById(movies, id) {}
 
 /**
- * filterByGenre()
+ * 6. filterByGenre()
  * -----------------------------
  * Returns all movie objects with a matching genre. Case-insensitive. If the inputted `movies` array is empty or no movies match the inputted `genre`, return `[]`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
@@ -138,7 +145,7 @@ function findById(movies, id) {}
 function filterByGenre(movies, genre) {}
 
 /**
- * getAllMoviesReleasedAtOrBeforeYear()
+ * 7. getAllMoviesReleasedAtOrBeforeYear()
  * -----------------------------
  * Returns all movie objects with a `released` year equal to or less than the given year.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
@@ -162,7 +169,7 @@ function filterByGenre(movies, genre) {}
 function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
 
 /**
- * getBiggestBoxOfficeMovie()
+ * 8. getBiggestBoxOfficeMovie()
  * -----------------------------
  * Returns the name of the movie with the highest `boxOffice` amount.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
