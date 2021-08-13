@@ -272,7 +272,7 @@ function getBiggestBoxOfficeMovie(movies) {
 
     // push numbers to array
     pricesArr.push(priceWithoutDollarSign);
-    console.log(pricesArr);
+    console.log(pricesArr); // test what gets pushed to empty array
 
     for (let i = 0; i < movies.length; i++) {
       // nested `if` statement to loop over prices
@@ -283,6 +283,10 @@ function getBiggestBoxOfficeMovie(movies) {
     }
   }
   return highestBoxOfficeMovie;
+
+
+  // TODO: This function is not looping, it's only getting the first index of the array of objects and returning the first one `Toy Story 4`.
+
 }
 console.log(getBiggestBoxOfficeMovie(exampleMovies)); // print to console to test
 // where in array of objects:
