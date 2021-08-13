@@ -116,7 +116,7 @@ function countByRating(movies) {
   }
   return ratingCount;
 }
-console.log(countByRating(exampleMovies));
+// console.log(countByRating(exampleMovies));
 
 // where in array of objects:
 // rated: "G",
@@ -135,7 +135,27 @@ console.log(countByRating(exampleMovies));
       // Toy Story 4
     };
  */
-function findById(movies, id) {}
+function findById(movies, id) {
+  if (movies.length === 0) {
+    return null;
+  }
+
+  let movieById = {}; // object
+
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].imdbID === id) {
+      console.log(movies[i].title);
+      return movieById = movies[i];
+    }
+  }
+  return null;
+}
+console.log(findById(exampleMovies, "tt1979376"));
+
+// where in array of objects:
+// imdbID: "tt1979376",
+// title: "Toy Story 4",
+
 
 /**
  * 6. filterByGenre()
