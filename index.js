@@ -116,7 +116,7 @@ function countByRating(movies) {
   }
   return ratingCount;
 }
-// console.log(countByRating(exampleMovies));
+// console.log(countByRating(exampleMovies)); // print to console to test
 
 // where in array of objects:
 // rated: "G",
@@ -150,7 +150,7 @@ function findById(movies, id) {
   }
   return null;
 }
-console.log(findById(exampleMovies, "tt1979376"));
+// console.log(findById(exampleMovies, "tt1979376")); // print to console to test
 
 // where in array of objects:
 // imdbID: "tt1979376",
@@ -177,7 +177,25 @@ console.log(findById(exampleMovies, "tt1979376"));
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre(movies, genre) {}
+function filterByGenre(movies, genre) {
+  if (movies.length === 0) {
+    return []; // empty array
+  }
+
+  let filteredGenre = []; // array
+
+  for (let i = 0; i < movies.length; i++) {
+    // if movie includes genre
+    if (movies[i].genre.includes(genre)) {
+      filteredGenre.push(movies[i]);
+    }
+  }
+  return filteredGenre; // outside for loop
+}
+console.log(filterByGenre(exampleMovies, "Mystery")); // print to console to test
+// where in array of objects:
+// genre: "Animation, Adventure, Comedy, Drama, Family, Fantasy",
+
 
 /**
  * 7. getAllMoviesReleasedAtOrBeforeYear()
